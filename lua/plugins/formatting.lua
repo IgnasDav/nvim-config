@@ -21,6 +21,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				swift = { "swiftformat" },
+				php = { { "pint", "php_cs_fixer" } },
 			},
 			format_on_save = {
 				lsp_fallback = true,

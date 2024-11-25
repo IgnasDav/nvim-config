@@ -164,7 +164,7 @@ return {
 			on_attach = on_attach,
 		})
 
-		local project_library_path = "/Users/ignasdavulis/.nvm/versions/node/v20.11.1/lib/node_modules"
+		local project_library_path = "/Users/ignasdavulis/.nvm/versions/node/v22.11.0/lib/node_modules"
 		local cmd = {
 			"node",
 			project_library_path .. "/@angular/language-server",
@@ -258,6 +258,28 @@ return {
 		lspconfig["sourcekit"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+		})
+
+		lspconfig["intelephense"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		lspconfig["gopls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			cmd = { "gopls" },
+			filetypes = { "go", "gomod", "gowork", "gotmpl" },
+			root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+			settings = {
+				gopls = {
+					completeUnimported = true,
+					usePlaceholders = true,
+					analyses = {
+						unusedparams = true,
+					},
+				},
+			},
 		})
 	end,
 }

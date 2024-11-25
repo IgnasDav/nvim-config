@@ -5,7 +5,6 @@ return {
 	},
 	config = function()
 		local xcodebuild = require("xcodebuild.integrations.dap")
-
 		-- TODO: change it to your local codelldb path
 		local codelldbPath = os.getenv("HOME") .. "/tools/codelldb-aarch64-darwin/extension/adapter/codelldb"
 
@@ -18,5 +17,11 @@ return {
 		vim.keymap.set("n", "<leader>b", xcodebuild.toggle_breakpoint, { desc = "Toggle Breakpoint" })
 		vim.keymap.set("n", "<leader>B", xcodebuild.toggle_message_breakpoint, { desc = "Toggle Message Breakpoint" })
 		vim.keymap.set("n", "<leader>dx", xcodebuild.terminate_session, { desc = "Terminate Debugger" })
+		vim.keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Add breakpoint at line" })
+		vim.keymap.set("n", "<leader>dus", function()
+			local widgets = require("dap.ui.widgets")
+			local sidebar = widgets.sidebar(widgets.scopes)
+			sidebar.open()
+		end, { desc = "Add breakpoint at line" })
 	end,
 }
