@@ -57,3 +57,19 @@ return {
 -- 		vim.cmd("colorscheme material")
 -- 	end,
 -- }
+-- return {
+-- 	"navarasu/onedark.nvim",
+-- 	lazy = false,
+-- 	priority = 1000,
+-- 	opts = {},
+-- 	config = function()
+-- 		local onedark = require("onedark")
+-- 		onedark.setup({
+-- 			style = "darker",
+-- 			term_colors = true,
+-- 			toggle_style_key = "<leader>ts",
+-- 			toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
+-- 		})
+-- 		onedark.load()
+-- 	end,
+-- }

@@ -21,8 +21,7 @@ return {
 				"black", -- python formatter
 				"pylint", -- python linter
 				"eslint_d", -- js linter
-				"php-cs-fixer",
-				"pint",
+				"eslint", -- js linter
 				"goimports",
 				"gofumpt",
 				"goimports-reviser",
@@ -45,10 +44,17 @@ return {
 			sources = {
 				--  to disable file types use
 				--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
-				formatting.prettier.with({
+				--  j
+				formatting.prettierd.with({
 					extra_filetypes = { "svelte" },
+					condition = function(utils)
+						return utils.root_has_file({
+							".prettier",
+						})
+					end,
 				}), -- js/ts formatter
 				formatting.stylua, -- lua formatter
+				formatting.eslint_d,
 				formatting.isort,
 				formatting.black,
 				formatting.goimports,

@@ -85,7 +85,6 @@ return {
 		local mason_registry = require("mason-registry")
 		local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
 			.. "/node_modules/@vue/language-server"
-
 		-- configure typescript server with plugin
 		lspconfig["ts_ls"].setup({
 			capabilities = capabilities,
@@ -187,32 +186,9 @@ return {
 
 		lspconfig.volar.setup({})
 
-		lspconfig.dartls.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			cmd = { "dart", "language-server", "--protocol=lsp" },
-		})
-
 		lspconfig.yamlls.setup({
 			capabilities = capabilities,
 		})
-
-		-- configure vue language server
-		-- lspconfig.volar.setup({
-		-- 	capabilities = capabilities,
-		-- 	on_attach = on_attach,
-		-- 	-- enable "take over mode" for typescript files as well: https://github.com/johnsoncodehk/volar/discussions/471
-		-- 	filetypes = { "typescript", "javascript", "vue" },
-		-- 	-- on_new_config = function(new_config, new_root_dir)
-		-- 	-- 	new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
-		-- 	-- end,
-		-- })
-
-		-- lspconfig["vuels"].setup({
-		-- 	capabilities = capabilities,
-		-- 	on_attach = on_attach,
-		-- 	filetypes = { "typescript", "javascript", "vue" },
-		-- })
 
 		-- configure graphql language server
 		lspconfig["graphql"].setup({
@@ -280,6 +256,29 @@ return {
 					},
 				},
 			},
+		})
+
+		lspconfig.eslint.setup({
+			on_attach = function(client, bufnr)
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					buffer = bufnr,
+					command = "EslintFixAll",
+				})
+			end,
+		})
+
+		lspconfig.stylelint_lsp.setup({
+			filetypes = { "css", "scss", "vue" },
+			root_dir = require("lspconfig").util.root_pattern("package.json", ".git"),
+			settings = {
+				stylelintplus = {
+					-- see available options in stylelint-lsp documentation
+					autoFixOnFormat = true,
+					autoFixOnSave = true,
+				},
+			},
+			on_attach = on_attach,
+			capabilities = capabilities,
 		})
 	end,
 }
