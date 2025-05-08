@@ -82,9 +82,9 @@ return {
 			on_attach = on_attach,
 		})
 
-		local mason_registry = require("mason-registry")
-		local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-			.. "/node_modules/@vue/language-server"
+		-- local mason_registry = require("mason-registry")
+		-- local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+		-- .. "/node_modules/@vue/language-server"
 		-- configure typescript server with plugin
 		lspconfig["ts_ls"].setup({
 			capabilities = capabilities,
@@ -93,7 +93,7 @@ return {
 				plugins = {
 					{
 						name = "@vue/typescript-plugin",
-						location = vue_language_server_path,
+						location = "/Users/ignasdavulis/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/language-server/",
 						languages = { "vue" },
 					},
 				},
