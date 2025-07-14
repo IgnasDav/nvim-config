@@ -11,14 +11,21 @@ return {
         dockerfile = { 'hadolint' },
         markdown = { 'vale' },
         rst = { 'vale' },
-        typescript = { 'eslint_d' },
         astro = { 'eslint_d' },
-        javascript = { 'eslint_d' },
         html = { 'eslint_d' },
         htmlangular = { 'eslint_d' },
         css = { 'stylelint' },
+        less = { 'stylelint' },
+        -- Regular config
+        javascript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
         javascriptreact = { 'eslint_d' },
         typescriptreact = { 'eslint_d' },
+        -- Relesys.Portal config
+        -- javascript = { 'biomejs' },
+        -- typescript = { 'biomejs' },
+        -- javascriptreact = { 'biomejs' },
+        -- typescriptreact = { 'biomejs' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,

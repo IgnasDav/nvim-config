@@ -34,12 +34,19 @@ return { -- Autoformat
       -- python = { "isort", "black" },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
-      javascript = { 'eslint_d', 'prettierd', 'prettier', stop_after_first = false },
-      typescript = { 'eslint_d', 'prettierd', 'prettier', stop_after_first = false },
+      -- javascript = { 'eslint_d', 'prettierd', 'prettier', stop_after_first = false },
+      -- typescript = { 'eslint_d', 'prettierd', 'prettier', stop_after_first = false },
+      -- typescriptreact = { 'eslint_d', 'prettierd', 'prettier', stop_after_first = false },
+      json = { 'biome', 'prettierd' },
+      javascript = { 'biome', 'biome-organize-imports' },
+      javascriptreact = { 'biome', 'biome-organize-imports' },
+      typescript = { 'biome', 'biome-organize-imports' },
+      typescriptreact = { 'biome', 'biome-organize-imports' },
       astro = { 'eslint_d', 'prettierd', 'prettier', stop_after_first = false },
-      html = { 'eslint_d', 'prettierd', 'prettier', stop_after_first = false },
+      html = { 'biome', 'eslint_d', 'prettierd', 'prettier', stop_after_first = false },
       htmlangular = { 'eslint_d', 'prettierd', 'prettier', stop_after_first = false },
-      css = { 'prettierd', 'stylelint', stop_after_first = false },
+      css = { 'biome', 'prettierd', 'stylelint', stop_after_first = false },
+      less = { 'biome', 'prettierd', 'stylelint', stop_after_first = false },
     },
   },
 }
